@@ -1,18 +1,24 @@
 "use client";
 
 import Hero from "@/components/sections/Hero";
+import Nav from "@/components/sections/Nav";
+import Sidebar from "@/components/sections/Sidebar";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeNavTab, setActiveNavTab] = useState<string | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
+      videoRef.current.playbackRate = 0.4;
     }
   }, []);
 
+  //Cursor glow.
   useEffect(() => {
     const cursor = document.querySelector(".cursor");
 
@@ -31,20 +37,29 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='flex relative min-h-screen flex-col items-center justify-between p-24'>
+    <main className='flex relative min-w-screen h-screen flex-row items-center justify-between p-8 lg:p-24 gap-16 overflow-hidden'>
       <video
         autoPlay
-        loop
         muted
         disablePictureInPicture
-        className='absolute inset-0 w-full h-screen object-cover -hue-rotate-30'
+        className='absolute -z-10 inset-0 w-screen h-screen object-cover -hue-rotate-30 opacity-70'
         ref={videoRef}
       >
         <source src='/heroVideo.mp4' type='video/mp4' />
       </video>
-      <div className='cursor absolute w-20 h-20 rounded-full bg-black mix-blend-multiply opacity-10 -translate-x-1/2 -translate-y-1/2 blur-xl'></div>
 
-      <Hero />
+      <div className='w-2/5 h-full flex self-start flex-col gap-24'>
+        {" "}
+        <Hero />
+        <Nav selectTab={setActiveNavTab} />
+      </div>
+
+      <div className='w-3/5 h-full'>
+        <Sidebar component={activeNavTab} />
+      </div>
+
+      <div className='cursor -z-10 absolute w-96 h-96 rounded-full bg-amber-50 opacity-5 -translate-x-1/2 -translate-y-1/2 blur-3xl'></div>
+      <div className='absolute -left-60 -left -top-80 -z-10 w-[900px] h-[900px] rounded-full bg-indigo-400 blur-3xl bg-opacity-40 mix-blend-multiply'></div>
     </main>
   );
 }
