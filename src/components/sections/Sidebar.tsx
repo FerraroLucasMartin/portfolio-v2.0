@@ -1,12 +1,25 @@
 import React from "react";
 import Timeline from "../Timeline";
+import Wip from "../Wip";
+import About from "./About";
 
-const Sidebar = (props: any) => {
-  const { component } = props;
+interface sidebarProps {
+  activeNavTab: string | undefined;
+}
 
+const Sidebar = ({ activeNavTab }: sidebarProps) => {
   const componentRender = () => {
-    switch (component) {
+    switch (activeNavTab) {
       case "timeline":
+        return <Timeline />;
+        break;
+
+      case "projects":
+        return <Wip />;
+        break;
+
+      case "about":
+        return <About />;
         break;
 
       default:
@@ -14,11 +27,7 @@ const Sidebar = (props: any) => {
     }
   };
 
-  return (
-    <div className='flex overflow-hidden w-full h-full p 8'>
-      <Timeline />
-    </div>
-  );
+  return <div className='flex w-full h-full p 8'>{componentRender()}</div>;
 };
 
 export default Sidebar;

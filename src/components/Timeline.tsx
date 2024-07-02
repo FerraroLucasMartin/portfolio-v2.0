@@ -1,7 +1,6 @@
 import { bebas } from "@/fonts";
-import React, { MouseEventHandler, useState } from "react";
-const glowSetting =
-  "bg-transparent border border-white border-opacity- rounded-2xl drop-shadow-glow";
+import React, { useEffect, useState } from "react";
+import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 
 interface TimeLineItem {
   id: number;
@@ -83,25 +82,31 @@ const workExperienceData: TimeLineItem[] = [
     title: "Full Stack Developer Jr.",
     company: "HengHeng Co.",
     body: (
-      <div>
-        <p></p>
-        <ul>
+      <div className='pb-2'>
+        <p>
+          {" "}
           At HengHeng, I contribute to creating web pages for the retail
           industry and restaurants that interact with Telegram bots for payment
-          and cart actions. My responsibilities include:
+          and cart actions.
+          <br />
+          <br />
+          My responsibilities include:
+        </p>
+        <ul className=' list-disc pl-5'>
           <li>
             Creating and maintaining responsive web interfaces using TypeScript
           </li>
           <li>
             Working on backend development to ensure functionality and
-            performance
+            performance.
           </li>
           <li>
             Implementing integrations with Telegram bots for payment processing
-            and cart management
+            and cart management using OpenAI API.
           </li>
           <li>
-            Connecting web pages to Telegram users for tailored user experiences
+            Connecting web pages to Telegram users for tailored user
+            experiences.
           </li>
         </ul>
       </div>
@@ -126,12 +131,15 @@ const workExperienceData: TimeLineItem[] = [
       <p>
         Worked on front-end, back-end, and database tasks, collaborating closely
         with a senior developer to ensure timely completion and high-quality
-        deliverables. Created a captivating landing page to improve user
-        engagement, developed a real-time chat component, utilized maps for
-        location-based features, designed and implemented login and subscription
-        forms for user authentication and data management, used cloud functions
-        for email notifications, and implemented unit tests to ensure code
-        quality and reliability.
+        deliverables.
+        <br />
+        <br />
+        Created a captivating landing page to improve user engagement, developed
+        a real-time chat component, utilized maps for location-based features,
+        designed and implemented login and subscription forms for user
+        authentication and data management, used cloud functions for email
+        notifications, and implemented unit tests to ensure code quality and
+        reliability.
       </p>
     ),
     skills: [
@@ -162,24 +170,28 @@ const workExperienceData: TimeLineItem[] = [
         back- end technologies.
       </p>
     ),
-    skills: [],
+    skills: [
+      "Group Coordination",
+      "Student Guidance and Support",
+      "Process Improvement Suggestions",
+    ],
   },
 ];
 
 const TimelineCard = ({ item }: TimelineCardProps) => {
   return (
-    <div className='flex flex-col gap-y-2'>
+    <div className='group flex flex-col gap-y-2 w-fit'>
       <div className='relative flex flex-row gap-x-4 items-center -ml-5'>
         <div
           id='dot'
-          className=' top-10 -left-5 w-[15px] h-[15px] rounded-full bg-indigo-700 bg-opacity-90 border border-indigo-500 border-opacity-80'
+          className=' top-10 -left-5 w-[15px] h-[15px] rounded-full bg-gradient-to-r from-indigo-700 to-indigo-800 border border-indigo-400 '
         ></div>
         <h1
           className={`${bebas.className}  -top-10 text-2xl`}
         >{`${item.initDate} - ${item.endDate}`}</h1>
       </div>
 
-      <div className='group w-5/6 relative flex flex-col gap-6 p-4 shadow-lg bg-gray-700 bg-opacity-10 hover:bg-opacity-30 border-white backdrop-blur-md border border-opacity-10 rounded-xl transition-all duration-700 overflow-hidden'>
+      <div className=' relative flex flex-col gap-6 p-4 shadow-lg backdrop-blur-md rounded-xl transition-all duration-700 overflow-hidden bg-gradient-to-r from-indigo-700/10 from-10% via-indigo-900/30 via-40% to-indigo-950/40 to-90% bg-grad border border-indigo-50 border-opacity-10 hover:border-opacity-25'>
         <h2 className=' font-bold text-lg'>
           {item.title} <br />{" "}
           <span className='text-sm'> at {item.company}</span>
@@ -192,47 +204,81 @@ const TimelineCard = ({ item }: TimelineCardProps) => {
             return (
               <li
                 key={"skillItem_" + skill + item.id}
-                className='text-sm font-bold text-indigo-100 bg-indigo-600 rounded-2xl p-2 bg-opacity-70 border border-indigo-500 border-opacity-30'
+                className='text-sm font-bold bg-indigo-950/30 rounded-2xl p-2 border border-indigo-400 border-opacity-70'
               >
                 {skill}
               </li>
             );
           })}
         </ul>
-        <div className='absolute -left-10 -top-10 -z-10 w-[300px] h-[300px] rounded-full bg-indigo-700 blur-3xl bg-opacity-30 mix-blend-multiply'></div>
+        <div
+          id='blur-title'
+          className='absolute -left-20 -top-20 -z-10 w-[400px] h-[400px] rounded-full bg-indigo-400 blur-3xl bg-opacity-5 group-hover:bg-opacity-10 duration-700'
+        ></div>
       </div>
     </div>
   );
 };
 
 const Timeline = () => {
-  const [selectedTab, setSelectedTab] = useState<string>("");
+  const [selectedTab, setSelectedTab] = useState<string>("work");
+  const [isScrollable, setIsScrollable] = useState<boolean>(false);
 
-  const tabOnClick = (event: any) => {
+  useEffect(() => {
+    const container = document.querySelector("#items-container");
+
+    const handleScroll = () => {
+      if (container) {
+        const isAtBottom =
+          container.scrollHeight - container.scrollTop ===
+          container.clientHeight;
+        setIsScrollable(!isAtBottom);
+      }
+    };
+
+    handleScroll();
+
+    container?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      container?.removeEventListener("scroll", handleScroll);
+    };
+  }, [selectedTab]);
+
+  const tabOnClickHandler = (event: any) => {
     setSelectedTab(event.target.name);
   };
 
   return (
-    <section className='flex flex-col gap-8 h-full'>
-      <nav className='flex flex-row w-full justify-evenly font-bold'>
+    <section className='relative flex flex-row gap-8 h-full z-10 overflow-visible  '>
+      <nav className=' top-1/2 -left-48 flex flex-col justify-center gap-4 font-bold'>
         <button
-          onClick={tabOnClick}
+          onClick={tabOnClickHandler}
           name='edu'
-          className='hover:drop-shadow-glow hover:shadow-2xl p-4 shadow-lg bg-opacity-20 border-white backdrop-blur-md border border-opacity-10 hover:border-opacity-20 rounded-xl transition-all duration-200'
+          className={`${
+            selectedTab === "edu"
+              ? "bg-gradient-to-r from-indigo-800/40 to-indigo-900/40 bg-opacity-10"
+              : "hover:drop-shadow-glow hover:shadow-2xl hover:border-opacity-25"
+          }  p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
         >
           Education
         </button>
         <button
-          onClick={tabOnClick}
+          onClick={tabOnClickHandler}
           name='work'
-          className='hover:drop-shadow-glow hover:shadow-2xl p-4 shadow-lg bg-opacity-20 border-white backdrop-blur-md border border-opacity-10 hover:border-opacity-20 rounded-xl transition-all duration-200'
+          className={`${
+            selectedTab === "work"
+              ? "bg-gradient-to-r from-indigo-800/60 to-indigo-900/60 bg-opacity-10"
+              : "hover:drop-shadow-glow hover:shadow-2xl  hover:border-opacity-25"
+          } p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
         >
           Work Experience
         </button>
       </nav>
 
       <div
-        className='h-full w-full overflow-y-auto'
+        id='items-container'
+        className='flex h-full w-fit overflow-y-scroll'
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -254,6 +300,16 @@ const Timeline = () => {
                 );
               })}
         </div>
+      </div>
+
+      <div
+        className={`${
+          isScrollable ? "inline" : "hidden"
+        } absolute bottom-0 right-0 animate-bounce`}
+      >
+        <MdOutlineKeyboardDoubleArrowDown
+          style={{ width: "30px", height: "30px" }}
+        />
       </div>
     </section>
   );

@@ -3,25 +3,29 @@ import { bebas } from "@/fonts";
 
 const Hero = () => {
   return (
-    <section
-      className={`shadow-lg border-white bg-indigo-50 bg-opacity-5 backdrop-blur-md border border-opacity-10 rounded-2xl p-6 relative w-fit h-full flex items-start flex-col`}
-    >
+    <section>
       <h1
-        className={`${bebas.className} drop-shadow-2xl font-semibold text-4xl tracking-widest lg:text-7xl`}
+        className={`${bebas.className} w-fit drop-shadow-2xl font-semibold text-4xl tracking-widest lg:text-7xl`}
       >
         Lucas Ferraro
       </h1>
       <h2
-        className={`${bebas.className} drop-shadow-2xl  text-white-400 text-2xl tracking-widest lg:text-5xl`}
+        className={`${bebas.className} w-fit drop-shadow-2xl  text-white-400 text-2xl tracking-widest lg:text-5xl`}
       >
         Full Stack Web Developer
       </h2>
       <p
-        className={`w-full lg:w-3/5 text-left  shado text-base lg:text-lg pt-4`}
+        className={`w-full lg:w-4/5 text-left text-sm lg:text-base pt-4 italic`}
       >
-        Hola esto es un texto descriptivo, diciendo algo de mi, tal ve
-        entregando un call to action? CUal deberia ser. Redes sociales? O ver
-        proyectos y una flecha para el scroll?
+        {/*  "I love coding and solving intricate problems. <br /> It's not just a
+        job for me, it's a passion that helps me grow. <br />
+        <br />
+        I've worked on personal projects, taught others, and even helped
+        startups build their tech. <br />
+        <br />
+        I'm always eager to learn more and push myself further in the IT world." */}
+        "Coding enthusiast, problem solver, and lifelong learner. Turning ideas
+        into code and challenges into opportunities."
       </p>
     </section>
   );
