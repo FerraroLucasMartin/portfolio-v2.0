@@ -1,16 +1,16 @@
 import { rock_salt } from "@/fonts";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import TypingAnimation from "../Typing";
 import Image from "next/image";
 
 const About = () => {
-  const quotes = [
+  const quotes = useMemo(() => [
     "I find immense satisfaction and personal growth in coding. Enjoy tackling complex problems and crafting creative solutions.",
     "I am deeply intrigued by the AI hype and its potential to revolutionize industries and society.",
     "I believe that good design should not only be functional but also visually pleasing. I've always been drawn to the intersection of technology and art. I'm sure that code can be a powerful tool for creative expression, and I enjoy exploring the boundaries of what's possible.",
     "I am passionate about continuous learning and am focused on growing within the IT industry through my dedication and perseverance.",
     "In my free time, I read fantasy fiction novels, write poetry, listen to jazz, and dance. I also enjoy exploring permaculture and ecology.",
-  ];
+  ];)
 
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState<number>(0);
   const [displayedText, setDisplayedText] = useState<string>("");
