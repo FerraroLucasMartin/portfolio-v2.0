@@ -20,7 +20,7 @@ export default function Home() {
 
   //Cursor glow.
   useEffect(() => {
-    const cursor = document.querySelector(".cursor");
+    const cursor = document.querySelector(".cursor") as HTMLElement | null;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (cursor) {
