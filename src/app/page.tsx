@@ -3,7 +3,6 @@
 import Hero from "@/components/sections/Hero";
 import Nav from "@/components/sections/Nav";
 import Sidebar from "@/components/sections/Sidebar";
-import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
@@ -45,7 +44,7 @@ export default function Home() {
         className='absolute -z-10 inset-0 w-screen h-screen object-cover -hue-rotate-30 opacity-60 bg-blend-multiply'
         ref={videoRef}
       >
-        <source src='/heroVideo.mp4' type='video/mp4' />
+        <source src='./heroVideo.mp4' type='video/mp4' />
       </video>
 
       <div className=' w-1/3 h-full flex self-start flex-col gap-24'>

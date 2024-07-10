@@ -11,7 +11,7 @@ const Wip = () => {
        */}{" "}
       <Image
         alt='gif-gag'
-        src='/loading-complete.gif'
+        src='./loading-complete.gif'
         width={600}
         height={600}
         className='mix-blend-lighten'
