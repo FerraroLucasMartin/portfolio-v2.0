@@ -1,4 +1,5 @@
 import { rock_salt } from "@/fonts";
+import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
 
 const About = () => {
@@ -6,7 +7,8 @@ const About = () => {
     () => [
       "I find immense satisfaction and personal growth in coding. Enjoy tackling complex problems and crafting creative solutions.",
       "I am deeply intrigued by the AI hype and its potential to revolutionize industries and society.",
-      "I believe that good design should not only be functional but also visually pleasing. I've always been drawn to the intersection of technology and art. I'm sure that code can be a powerful tool for creative expression, and I enjoy exploring the boundaries of what's possible.",
+      "I believe that good design should not only be functional but also visually pleasing. I'm sure that code can be a powerful tool for creative expression.",
+      "I've always been drawn to the intersection of technology and art. I enjoy exploring the boundaries of what's possible.",
       "I am passionate about continuous learning and am focused on growing within the IT industry through my dedication and perseverance.",
       "In my free time, I read fantasy fiction novels, write poetry, listen to jazz, and dance. I also enjoy exploring permaculture and ecology.",
     ],
@@ -40,8 +42,15 @@ const About = () => {
 
   return (
     <div
-      className={` w-full h-full flex items-center justify-center flex-col text-xl tracking-widest gap-4`}
+      className={` w-full h-full flex flex-row-reverse items-center justify-center text-xl tracking-widest gap-4`}
     >
+      <Image
+        src={"/avatar.jpg"}
+        width={400}
+        height={400}
+        alt='anime avatar'
+        className='border border-white rounded-xl border-opacity-50 shadow-xl'
+      ></Image>
       <div className='w-1/2'>{displayedText}</div>
     </div>
   );
