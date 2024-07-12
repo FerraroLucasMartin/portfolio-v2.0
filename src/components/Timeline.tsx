@@ -113,6 +113,7 @@ const workExperienceData: TimeLineItem[] = [
     ),
     skills: [
       "Next.js",
+      "Typescript",
       "Tailwind",
       "Redux",
       "Python",
@@ -180,7 +181,7 @@ const workExperienceData: TimeLineItem[] = [
 
 const TimelineCard = ({ item }: TimelineCardProps) => {
   return (
-    <div className='group flex flex-col gap-y-2 w-fit'>
+    <div className='group flex flex-col gap-y-2 min-w-full'>
       <div className='relative flex flex-row gap-x-4 items-center -ml-5'>
         <div
           id='dot'
