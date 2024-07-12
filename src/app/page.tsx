@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='flex relative min-w-screen h-screen flex-row items-center justify-between p-8 lg:p-28 gap-6 overflow-hidden'>
+    <main className='flex relative min-w-screen h-screen flex-col md:flex-row items-center justify-between p-8 lg:p-28 gap-6 overflow-hidden'>
       <video
         autoPlay
         muted
@@ -47,13 +47,13 @@ export default function Home() {
         <source src='./heroVideo.mp4' type='video/mp4' />
       </video>
 
-      <div className=' w-1/3 h-full flex self-start flex-col gap-24'>
+      <div className='w-full md:w-1/3 h-fit md:h-full flex self-start flex-col gap-8 md:gap-24'>
         {" "}
-        <Hero />
+        <Hero activeNavTab={activeNavTab} />
         <Nav activeNavTab={activeNavTab} selectTab={setActiveNavTab} />
       </div>
 
-      <div className='w-2/3 h-full'>
+      <div className='w-full md:w-2/3 h-full'>
         <Sidebar activeNavTab={activeNavTab} />
       </div>
 

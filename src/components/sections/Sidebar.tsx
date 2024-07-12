@@ -27,7 +27,7 @@ const Sidebar = ({ activeNavTab }: sidebarProps) => {
     }
   };
 
-  return <div className='flex w-full h-full p 8'>{componentRender()}</div>;
+  return <div className='flex min-w-full h-full'>{componentRender()}</div>;
 };
 
 export default Sidebar;

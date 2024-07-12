@@ -9,9 +9,9 @@ interface NavProps {
 
 const Nav = ({ selectTab, activeNavTab }: NavProps) => {
   return (
-    <nav className='w-full h-full '>
+    <nav className='w-full h-fit md:h-full '>
       <ul
-        className={`flex flex-col gap-8 w-full h-full ${bebas.className} hover:drop-shadow-2xl font-semibold text-xl tracking-widest lg:text-2xl`}
+        className={`flex justify-between md:justify-start md:flex-col gap-8 min-w-full h-full ${bebas.className} hover:drop-shadow-2xl font-semibold text-xl tracking-widest lg:text-2xl`}
       >
         <li>
           <Link
@@ -20,7 +20,9 @@ const Nav = ({ selectTab, activeNavTab }: NavProps) => {
               selectTab("timeline");
             }}
             className={`${
-              activeNavTab === "timeline" ? "pl-8 animate-pulse" : "hover:pl-8"
+              activeNavTab === "timeline"
+                ? "md:pl-8 animate-pulse"
+                : "md:hover:pl-8"
             }  transition-all duration-300`}
           >
             {" "}
@@ -34,7 +36,9 @@ const Nav = ({ selectTab, activeNavTab }: NavProps) => {
               selectTab("projects");
             }}
             className={`${
-              activeNavTab === "projects" ? "pl-8 animate-pulse" : "hover:pl-8"
+              activeNavTab === "projects"
+                ? "md:pl-8 animate-pulse"
+                : "md:hover:pl-8"
             } transition-all duration-300`}
           >
             {" "}
@@ -48,7 +52,9 @@ const Nav = ({ selectTab, activeNavTab }: NavProps) => {
               selectTab("about");
             }}
             className={`${
-              activeNavTab === "about" ? "pl-8 animate-pulse" : "hover:pl-8"
+              activeNavTab === "about"
+                ? "md:pl-8 animate-pulse"
+                : "md:hover:pl-8"
             } transition-all duration-300`}
           >
             {" "}
