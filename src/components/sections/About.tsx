@@ -42,8 +42,9 @@ const About = () => {
 
   return (
     <div
-      className={` w-full h-full flex flex-row-reverse items-center justify-center text-xl tracking-widest gap-4`}
+      className={`min-w-full h-full flex items-center flex-col-reverse xl:flex-row justify-center text-xl tracking-widest gap-4 pt-8`}
     >
+      <div className='h-36 xl:h-1/2 w-4/5 xl:w-1/2'>{displayedText}</div>
       <Image
         src={"/avatar.jpg"}
         width={400}
@@ -51,7 +52,6 @@ const About = () => {
         alt='anime avatar'
         className='border border-white rounded-xl border-opacity-50 shadow-xl'
       ></Image>
-      <div className='w-1/2'>{displayedText}</div>
     </div>
   );
 };

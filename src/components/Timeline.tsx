@@ -1,4 +1,5 @@
 import { bebas } from "@/fonts";
+import { Container } from "postcss";
 import React, { useEffect, useState } from "react";
 import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 
@@ -251,8 +252,8 @@ const Timeline = () => {
   };
 
   return (
-    <section className='relative flex flex-row gap-8 h-full z-10 overflow-visible  '>
-      <nav className=' top-1/2 -left-48 flex flex-col justify-center gap-4 font-bold'>
+    <section className='relative flex flex-col md:flex-row gap-8 h-4/5 md:h-full z-10 overflow-visible'>
+      <nav className=' top-1/2 -left-48 flex flex-row md:flex-col justify-center gap-4 font-bold'>
         <button
           onClick={tabOnClickHandler}
           name='edu'
@@ -260,7 +261,7 @@ const Timeline = () => {
             selectedTab === "edu"
               ? "bg-gradient-to-r from-indigo-800/40 to-indigo-900/40 bg-opacity-10"
               : "hover:drop-shadow-glow hover:shadow-2xl hover:border-opacity-25"
-          }  p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
+          }   grow md:grow-0 p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
         >
           Education
         </button>
@@ -271,7 +272,7 @@ const Timeline = () => {
             selectedTab === "work"
               ? "bg-gradient-to-r from-indigo-800/60 to-indigo-900/60 bg-opacity-10"
               : "hover:drop-shadow-glow hover:shadow-2xl  hover:border-opacity-25"
-          } p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
+          } grow md:grow-0 p-4 shadow-lg  border-white backdrop-blur-md border border-opacity-10  rounded-xl transition-all duration-200  bg-gray-700 bg-opacity-0`}
         >
           Work Experience
         </button>
