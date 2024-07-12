@@ -33,8 +33,11 @@ const Hero = ({ activeNavTab }: HeroProps) => {
         startups build their tech. <br />
         <br />
         I'm always eager to learn more and push myself further in the IT world." */}
-        "Coding enthusiast, problem solver, and lifelong learner. Turning ideas
-        into code and challenges into opportunities."
+        {/* "Coding enthusiast, problem solver, and lifelong learner. Turning ideas
+        into code and challenges into opportunities." */}
+        "Passionate coder dedicated to solving challenges and crafting
+        beautiful, functional designs. Driven by continuous learning and
+        creative problem-solving."
       </p>
     </section>
   );
