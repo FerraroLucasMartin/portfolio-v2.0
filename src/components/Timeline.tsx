@@ -307,10 +307,10 @@ const Timeline = () => {
       <div
         className={`${
           isScrollable ? "inline" : "hidden"
-        } absolute bottom-0 right-0 animate-bounce`}
+        } absolute bottom-0 -right-9 animate-bounce`}
       >
         <MdOutlineKeyboardDoubleArrowDown
-          style={{ width: "30px", height: "30px" }}
+          style={{ width: "40px", height: "40px" }}
         />
       </div>
     </section>
