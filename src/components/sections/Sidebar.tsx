@@ -14,9 +14,9 @@ const Sidebar = ({ activeNavTab }: sidebarProps) => {
         return <Timeline />;
         break;
 
-      case "projects":
-        return <Wip />;
-        break;
+      // case "projects":
+      //   return <Wip />;
+      //   break;
 
       case "about":
         return <About />;

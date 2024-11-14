@@ -29,7 +29,7 @@ const Nav = ({ selectTab, activeNavTab }: NavProps) => {
             Timeline
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href=''
             onClick={() => {
@@ -44,7 +44,7 @@ const Nav = ({ selectTab, activeNavTab }: NavProps) => {
             {" "}
             Projects
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             href=''
